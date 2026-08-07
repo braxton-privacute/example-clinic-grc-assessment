@@ -1,0 +1,64 @@
+[
+  {
+    "id": "EFC-001",
+    "threat": "Exfiltration of ePHI via vendor database",
+    "vulnerability": "No pre-onboarding vetting; BAA never executed",
+    "scf_controls": [
+      "TPM-02",
+      "TPM-05"
+    ],
+    "likelihood": 5,
+    "impact": 5,
+    "risk_score": 25,
+    "risk_band": "Critical",
+    "hipaa_refs": [
+      "164.308(a)(7)(ii)(E)",
+      "164.308(b)(1)",
+      "164.308(b)(2)",
+      "164.308(b)(3)",
+      "164.314(a)(2)(iii)",
+      "164.314(b)(1)",
+      "164.314(b)(2)(i)",
+      "164.314(b)(2)(ii)",
+      "164.314(b)(2)(iii)"
+    ],
+    "hipaa_refs_source": "scf-crosswalk",
+    "remediation": "Vendor freeze; collect SOC 2; execute BAA before data flow resumes"
+  },
+  {
+    "id": "EFC-002",
+    "threat": "Unverified e-Rx data flow between EHR and pharmacy",
+    "vulnerability": "Regulated data path never mapped; transit encryption never verified",
+    "scf_controls": [
+      "AST-02.8",
+      "CRY-03"
+    ],
+    "likelihood": 4,
+    "impact": 5,
+    "risk_score": 20,
+    "risk_band": "Critical",
+    "hipaa_refs": [
+      "164.312(e)(1)"
+    ],
+    "hipaa_refs_source": "scf-crosswalk",
+    "remediation": "Map and classify the flow as ePHI-bearing; verify TLS 1.2+ before further dispensing"
+  },
+  {
+    "id": "EFC-003",
+    "threat": "MFA disabled on nursing EHR accounts",
+    "vulnerability": "Confirmed-absent MFA on internet-facing clinical accounts",
+    "scf_controls": [
+      "IAC-06",
+      "IAC-02"
+    ],
+    "likelihood": 5,
+    "impact": 4,
+    "risk_score": 20,
+    "risk_band": "Critical",
+    "hipaa_refs": [
+      "164.312(a)(2)(i)"
+    ],
+    "hipaa_refs_source": "scf-crosswalk",
+    "remediation": "Enforce MFA on all clinical accounts; audit login history for compromise"
+  }
+]
