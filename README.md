@@ -16,6 +16,20 @@ looks the same as a correct one. This treats findings as structured data and
 validates every control ID against the live SCF catalog before any report is
 generated, so a bad ID stops the run instead of shipping in a report.
 
+## See it run
+
+Every control ID is checked against the live SCF catalog before a report is written:
+
+![Pipeline output showing 1468 controls loaded from the SCF, then six control IDs across findings EFC-001, EFC-002 and EFC-003 each validating OK against their SCF titles.](screenshots/pipeline-run.png)
+
+More importantly, an invalid ID **stops the run** instead of reaching a report:
+
+![Pipeline output showing TPM-05, CRY-03 and IAC-06 confirmed as real SCF controls, and PHY-03 flagged as NOT in the SCF.](screenshots/validation-rejects-bad-id.png)
+
+`PHY-03` looks entirely plausible — it follows SCF naming conventions and would pass a
+human skim. It isn't in the catalog. That check is the difference between a report that
+cites verified controls and one that cites confident-sounding mistakes.
+
 ## What's inside
 
 - `data/findings.json` — the findings as structured data
